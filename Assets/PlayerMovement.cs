@@ -12,17 +12,21 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (Input.GetKeyDown(KeyCode.Space) == true)
+      if (Input.GetKeyDown(KeyCode.UpArrow) == true)
         {
-            myRigidbody.linearVelocity = Vector2.up * 10;
+            myRigidbody.linearVelocityY = 10;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) == true)
         {
-            myRigidbody.linearVelocity = Vector2.left * 10;
+            myRigidbody.linearVelocityX = -10;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) == true)
         {
-            myRigidbody.linearVelocity = Vector2.right * 10;
+            myRigidbody.linearVelocityX = 10;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) == true)
+        {
+            myRigidbody.linearVelocityY = -10;
         }
     }
 }
