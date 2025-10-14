@@ -1,7 +1,6 @@
 using UnityEngine;
 
-
-public class PlayerMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
     public float movespeed;
@@ -9,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        moveset = 1; 
+        moveset = 1;
     }
 
     // Update is called once per frame
@@ -39,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) == true && moveset == 1)
         {
             moveset = 2;
-            myRigidbody.freezeRotation = false;
         }
         else if (Input.GetKeyDown(KeyCode.Space) == true && moveset == 2)
         {
