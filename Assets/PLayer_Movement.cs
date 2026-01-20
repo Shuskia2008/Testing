@@ -24,9 +24,12 @@ public class PLayer_Movement : MonoBehaviour
     void Update()
     {
         //Jumping
-        if (Input.GetKeyDown(KeyCode.UpArrow) == true || Input.GetKeyDown(KeyCode.W) == true)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) == true || Input.GetKeyDown(KeyCode.W) == true) && (GetComponent<Detection>().Detection_D == true))
         {
             variableYspeed_VVV = jumpheight_J;
+            GetComponent<Detection>().Detection_D = false;
+
+            myRigidbody.AddForce(Vector2.up * jumpspeed_J, ForceMode2D.Impulse);
         }
         if (variableYspeed_VVV < 0)
         {
@@ -35,8 +38,7 @@ public class PLayer_Movement : MonoBehaviour
         if (variableYspeed_VVV > 0)
         {
             variableYspeed_VVV -= jumpspeed_J * Time.deltaTime * 0.5f;
-            transform.position += Vector3.up * variableYspeed_VVV * Time.deltaTime;
-            variableYspeed_VVV -= jumpspeed_J * Time.deltaTime * 0.5f;
+            myRigidbody.linearVelocityY -= variableYspeed_VVV;
         }
         //Grounding
         if (Input.GetKeyDown(KeyCode.DownArrow) == true || Input.GetKeyDown(KeyCode.S) == true)
