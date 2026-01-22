@@ -28,17 +28,16 @@ public class PLayer_Movement : MonoBehaviour
         {
             variableYspeed_VVV = jumpheight_J;
             GetComponent<Detection>().Detection_D = false;
-
-            myRigidbody.AddForce(Vector2.up * jumpspeed_J, ForceMode2D.Impulse);
-        }
-        if (variableYspeed_VVV < 0)
-        {
-            variableYspeed_VVV = 0;
         }
         if (variableYspeed_VVV > 0)
         {
-            variableYspeed_VVV -= jumpspeed_J * Time.deltaTime * 0.5f;
-            myRigidbody.linearVelocityY -= variableYspeed_VVV;
+            variableYspeed_VVV = 0;
+        }
+        if (variableYspeed_VVV < 0)
+        {
+            variableYspeed_VVV += jumpspeed_J * Time.deltaTime * 0.5f;
+            transform.position -= Vector3.up * variableYspeed_VVV * Time.deltaTime;
+            variableYspeed_VVV += jumpspeed_J * Time.deltaTime * 0.5f;
         }
         //Grounding
         if (Input.GetKeyDown(KeyCode.DownArrow) == true || Input.GetKeyDown(KeyCode.S) == true)
@@ -46,12 +45,12 @@ public class PLayer_Movement : MonoBehaviour
             myRigidbody.linearVelocityY = -Groundspeed_G;
         }
         //Moving L
-        if (Input.GetKey(KeyCode.LeftArrow) == true || Input.GetKeyDown(KeyCode.A) == true)
+        if ((Input.GetKey(KeyCode.LeftArrow) == true || Input.GetKeyDown(KeyCode.A) == true) && (GetComponent<Detection>().Detection_L == false))
         {
             myRigidbody.linearVelocityX = -movespeed_L;
         }
         //Moving R
-        if (Input.GetKey(KeyCode.RightArrow) == true || Input.GetKeyDown(KeyCode.D) == true)
+        if ((Input.GetKey(KeyCode.RightArrow) == true || Input.GetKeyDown(KeyCode.D) == true) && (GetComponent<Detection>().Detection_R == false))
         {
             myRigidbody.linearVelocityX = movespeed_R;
         }
