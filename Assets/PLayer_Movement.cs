@@ -23,21 +23,23 @@ public class PLayer_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Gravity
+        Physics2D.gravity = new Vector2(0, 0);
         //Jumping
         if ((Input.GetKeyDown(KeyCode.UpArrow) == true || Input.GetKeyDown(KeyCode.W) == true) && (GetComponent<Detection>().Detection_D == true))
         {
             variableYspeed_VVV = jumpheight_J;
             GetComponent<Detection>().Detection_D = false;
         }
-        if (variableYspeed_VVV > 0)
+        if (variableYspeed_VVV < 0)
         {
             variableYspeed_VVV = 0;
         }
-        if (variableYspeed_VVV < 0)
+        if (variableYspeed_VVV > 0)
         {
-            variableYspeed_VVV += jumpspeed_J * Time.deltaTime * 0.5f;
-            transform.position -= Vector3.up * variableYspeed_VVV * Time.deltaTime;
-            variableYspeed_VVV += jumpspeed_J * Time.deltaTime * 0.5f;
+            variableYspeed_VVV -= jumpspeed_J * Time.deltaTime * 0.5f;
+            transform.position += Vector3.up * variableYspeed_VVV * Time.deltaTime;
+            variableYspeed_VVV -= jumpspeed_J * Time.deltaTime * 0.5f;
         }
         //Grounding
         if (Input.GetKeyDown(KeyCode.DownArrow) == true || Input.GetKeyDown(KeyCode.S) == true)
