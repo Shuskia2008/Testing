@@ -11048,11 +11048,11 @@ MonoBehaviour:
   movelength_L: 10
   movespeed_R: 10
   movelength_R: 10
-  jumpspeed_J: 10
+  jumptime_J: 10
   jumpheight_J: 10
-  Groundspeed_G: 10
+  Groundspeed_G: 1000
   Gravityspeed_G: 10
-  variableYspeed_VVV: 10
+  jumptimeleft_J: 0
 --- !u!61 &1771518626
 BoxCollider2D:
   m_ObjectHideFlags: 0
