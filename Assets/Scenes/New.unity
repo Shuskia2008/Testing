@@ -11048,7 +11048,7 @@ MonoBehaviour:
   movelength_L: 10
   movespeed_R: 10
   movelength_R: 10
-  jumptime_J: 10
+  jumptime_J: 1
   jumpheight_J: 10
   Groundspeed_G: 1000
   Gravityspeed_G: 10
