@@ -9,10 +9,10 @@ public class PLayer_Movement : MonoBehaviour
     public float movelength_R;
     public float jumptime_J;
     public float jumpheight_J;
+    public float jumptimeleft_J;
     public float Groundspeed_G;
     public float Gravityspeed_G;
     public bool Grounding_G;
-    public float jumptimeleft_J;
     //dashing
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
