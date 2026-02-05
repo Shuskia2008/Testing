@@ -11004,6 +11004,7 @@ GameObject:
   - component: {fileID: 1771518627}
   - component: {fileID: 1771518626}
   - component: {fileID: 1771518629}
+  - component: {fileID: 1771518630}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -11050,9 +11051,10 @@ MonoBehaviour:
   movelength_R: 10
   jumptime_J: 1
   jumpheight_J: 10
+  jumptimeleft_J: 0
   Groundspeed_G: 1000
   Gravityspeed_G: 10
-  jumptimeleft_J: 0
+  Grounding_G: 0
 --- !u!61 &1771518626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11198,6 +11200,32 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 0
+--- !u!114 &1771518630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771518623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecfcbf1da901f43b6c53ea3005127f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRigidbody: {fileID: 0}
+  movespeed_L: 0
+  movelength_L: 0
+  canMoving_L: 0
+  movespeed_R: 0
+  movelength_R: 0
+  canMoving_R: 0
+  jumptime_J: 0
+  jumpheight_J: 0
+  jumptimeleft_J: 0
+  canJumping_J: 0
+  Groundspeed_G: 0
+  canGrounding_G: 0
+  Gravityspeed_G: 0
 --- !u!1 &2141002273
 GameObject:
   m_ObjectHideFlags: 0
