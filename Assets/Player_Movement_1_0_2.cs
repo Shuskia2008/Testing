@@ -5,11 +5,11 @@ public class Player_Movement_1_0_2 : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
     //Moving
-            //Left
+    //Left
     public float movespeed_L;
     public float movelength_L;
     public bool canMoving_L;
-            //Right
+    //Right
     public float movespeed_R;
     public float movelength_R;
     public bool canMoving_R;
@@ -19,10 +19,10 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     public float jumptimeleft_J;
     public bool canJumping_J;
     //Grounding
-            //Groundpound
+    //Groundpound
     public float Groundspeed_G;
     public bool canGrounding_G;
-            //Gravity
+    //Gravity
     public float Gravityspeed_G;
     //Dashing
 
@@ -51,18 +51,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
         }
-        public void Jump(InputAction.CallbackContext ctx)
-    {
-        if ((ctx.started) && (GetComponent<Detection>().Detection_D == true) && (canJumping_J == false))
-        {
-            jumptimeleft_J = jumptime_J;
-            GetComponent<Detection>().Detection_D = false;
-        }
-        else if ((ctx.canceled) && (canJumping_J == false))
-        {
-            jumptimeleft_J = 0;
-        }
-    }
+        
         //Grounding
         if ((Input.GetKeyDown(KeyCode.DownArrow) == true || Input.GetKeyDown(KeyCode.S) == true) && canGrounding_G == true)
         {
@@ -85,9 +74,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         }
 
         myRigidbody.linearVelocityX = moveX;
-
     }
-    
     public void Move(InputAction.CallbackContext ctx)
     {
         if ((GetComponent<Detection>().Detection_R == false) && (ctx.ReadValue<Vector2>().x > 0) && (canMoving_L == false) && (canMoving_R == false))
@@ -103,5 +90,16 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             moveX = ctx.ReadValue<Vector2>().x;
         }
     }
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+            if ((ctx.started) && (GetComponent<Detection>().Detection_D == true) && (canJumping_J == false))
+            {
+                jumptimeleft_J = jumptime_J;
+                GetComponent<Detection>().Detection_D = false;
+            }
+            else if ((ctx.canceled) && (canJumping_J == false))
+            {
+                jumptimeleft_J = 0;
+            }
+    }
 }
-
