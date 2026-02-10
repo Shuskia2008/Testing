@@ -32,6 +32,25 @@ public class Player_Movement_1_0_2 : MonoBehaviour
 
     void Update()
     {
+        # region Moving
+        //Moving L
+        if ((Input.GetKey(KeyCode.LeftArrow) == true || Input.GetKey(KeyCode.A) == true) && (GetComponent<Detection>().Detection_L == false) && (canMoving_L == true))
+        {
+            myRigidbody.linearVelocityX = -movespeed_L;
+        }
+        //Moving R
+        if ((Input.GetKey(KeyCode.RightArrow) == true || Input.GetKey(KeyCode.D) == true) && (GetComponent<Detection>().Detection_R == false) && (canMoving_R == true))
+        {
+            myRigidbody.linearVelocityX = movespeed_R;
+        }
+        //Moving M
+        if ((Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.A) == false) && (Input.GetKey(KeyCode.RightArrow) == false && Input.GetKey(KeyCode.D) == false) && (canMoving_L == true))
+        {
+            myRigidbody.linearVelocityX = 0;
+        }
+
+        myRigidbody.linearVelocityX = moveX;
+        # endregion
         //Gravity
         myRigidbody.linearVelocityY -= Gravityspeed_G * Time.deltaTime;
         Physics2D.gravity = new Vector2(0, 0);
@@ -57,23 +76,6 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         {
             myRigidbody.linearVelocityY = -Groundspeed_G;
         }
-        //Moving L
-        if ((Input.GetKey(KeyCode.LeftArrow) == true || Input.GetKey(KeyCode.A) == true) && (GetComponent<Detection>().Detection_L == false) && (canMoving_L == true))
-        {
-            myRigidbody.linearVelocityX = -movespeed_L;
-        }
-        //Moving R
-        if ((Input.GetKey(KeyCode.RightArrow) == true || Input.GetKey(KeyCode.D) == true) && (GetComponent<Detection>().Detection_R == false) && (canMoving_R == true))
-        {
-            myRigidbody.linearVelocityX = movespeed_R;
-        }
-        //Moving M
-        if ((Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.A) == false) && (Input.GetKey(KeyCode.RightArrow) == false && Input.GetKey(KeyCode.D) == false) && (canMoving_L == true))
-        {
-            myRigidbody.linearVelocityX = 0;
-        }
-
-        myRigidbody.linearVelocityX = moveX;
     }
     public void Move(InputAction.CallbackContext ctx)
     {
