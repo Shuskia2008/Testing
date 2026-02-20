@@ -32,7 +32,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     public float GDy;
 
 
-
+    #region Player
     void Update()
     {
         #region Moving_M
@@ -78,17 +78,19 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         //Gravity
         //myRigidbody.linearVelocityX = GDx;
         //myRigidbody.linearVelocityY = GDy;
-        myRigidbody.linearVelocityY -= Gravityspeed_G * Time.deltaTime;
+        //myRigidbody.linearVelocityY -= Gravityspeed_G * Time.deltaTime;
+        Physics2D.gravity = new Vector2(0, 0);
+        float angle = 90;
+        float distance = 1;
+        Vector2 dir = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * distance;
+
         # endregion
         #region GroundPounding_G
         //Grounding
-        if ((Input.GetKeyDown(KeyCode.DownArrow) == true || Input.GetKeyDown(KeyCode.S) == true) && canGrounding_G == true)
-        {
-            myRigidbody.linearVelocityY = -Groundspeed_G;
-        }
-        #endregion
-        #endregion
+    #endregion
+    #endregion
     }
+    #endregion
     #region Controller
     #region Moving Controller_M
     public void Move(InputAction.CallbackContext ctx)
@@ -109,6 +111,32 @@ public class Player_Movement_1_0_2 : MonoBehaviour
                 jumptimeleft_J = 0;
             }
     }
+    #endregion
+    #region Grounding Controller_G
+    #region Gravity Controller_G
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)myRigidbody.linearVelocity);
+
+
+        float angle = 90 * Mathf.Deg2Rad;
+        float distance = 1;
+        Vector3 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + dir);
+    }
+    #endregion
+    #region GroundPounding Controller_G
+    public void GroundPounding(InputAction.CallbackContext ctx)
+    {
+        if (ctx.ReadValue<Vector2>().y == -1 && canGrounding_G == true)
+        {
+            myRigidbody.linearVelocityY = -Groundspeed_G;
+        }
+    }
+    #endregion
     #endregion
     #endregion
 }

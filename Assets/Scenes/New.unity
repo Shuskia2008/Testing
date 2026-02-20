@@ -10999,7 +10999,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771518624}
-  - component: {fileID: 1771518625}
   - component: {fileID: 1771518628}
   - component: {fileID: 1771518627}
   - component: {fileID: 1771518626}
@@ -11032,29 +11031,6 @@ Transform:
   - {fileID: 421701392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1771518625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771518623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a436a1cb551a00749964f76e8b7576bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myRigidbody: {fileID: 1771518627}
-  movespeed_L: 10
-  movelength_L: 10
-  movespeed_R: 10
-  movelength_R: 10
-  jumptime_J: 1
-  jumpheight_J: 10
-  jumptimeleft_J: 0
-  Groundspeed_G: 1000
-  Gravityspeed_G: 10
-  Grounding_G: 0
 --- !u!61 &1771518626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11116,7 +11092,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 1860b3d5b941aec4ea905e4474c060d9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -11212,20 +11188,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ecfcbf1da901f43b6c53ea3005127f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRigidbody: {fileID: 0}
-  movespeed_L: 0
-  movelength_L: 0
-  canMoving_L: 0
-  movespeed_R: 0
-  movelength_R: 0
-  canMoving_R: 0
-  jumptime_J: 0
-  jumpheight_J: 0
+  myRigidbody: {fileID: 1771518627}
+  moveX: 0
+  movecontroller: 0
+  movespeed_L: 10
+  movelength_L: 10
+  canMoving_L: 1
+  movespeed_R: 10
+  movelength_R: 10
+  canMoving_R: 1
+  jumptime_J: 10
   jumptimeleft_J: 0
-  canJumping_J: 0
-  Groundspeed_G: 0
-  canGrounding_G: 0
+  jumpheight_J: 10
+  canJumping_J: 1
+  Groundspeed_G: 10
+  canGrounding_G: 1
   Gravityspeed_G: 0
+  GDx: 0
+  GDy: 0
 --- !u!1 &2141002273
 GameObject:
   m_ObjectHideFlags: 0
