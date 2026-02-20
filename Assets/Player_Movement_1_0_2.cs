@@ -106,7 +106,8 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         //Vector2 dir = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * distance;
         float angle = GravityAngle_G * Mathf.Deg2Rad;
         float distance = Gravityspeed_G;
-        Vector3 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
+        GDx = Mathf.Cos(angle) * distance;
+        GDy = Mathf.Cos(angle) * distance;
         #endregion
         #region GroundPounding_G
         //Grounding
