@@ -92,7 +92,7 @@
                     "id": "a4b29a76-b01e-4113-b95e-298cb95ea151",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 }
             ],

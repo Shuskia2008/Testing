@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Player_Movement_1_0_2 : MonoBehaviour
 {
@@ -56,6 +58,10 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region Player
     void Update()
     {
+            float angle = GravityAngle_G * Mathf.Deg2Rad;
+            float distance = Gravityspeed_G;
+            GDx = Mathf.Cos(angle);
+            GDy = Mathf.Sin(angle);
         #region Moving_M
 
         if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canMoving_R == true))
@@ -88,8 +94,12 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         }
         if (jumptimeleft_J > 0)
         {
-            jumptimeleft_J -= Time.deltaTime * 0.5f;
+            /*jumptimeleft_J -= Time.deltaTime * 0.5f;
             transform.position += Vector3.up * 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
+            myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
+            jumptimeleft_J -= Time.deltaTime * 0.5f;*/
+            jumptimeleft_J -= Time.deltaTime * 0.5f;
+            transform.position += new Vector3(GDx * distance, GDy * distance) * 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
             myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
         }
@@ -97,17 +107,13 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #region Grounding_G
         #region Gravity_G
         //Gravity
+        Physics2D.gravity = new Vector2(GDx * distance, GDy * distance);
         //myRigidbody.linearVelocityX = GDx;
         //myRigidbody.linearVelocityY = GDy;
         //myRigidbody.linearVelocityY -= Gravityspeed_G * Time.deltaTime;
-        Physics2D.gravity = new Vector2(0, 0);
         //float angle = 90;
         //float distance = 1;
         //Vector2 dir = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * distance;
-        float angle = GravityAngle_G * Mathf.Deg2Rad;
-        float distance = Gravityspeed_G;
-        GDx = Mathf.Cos(angle) * distance;
-        GDy = Mathf.Cos(angle) * distance;
         #endregion
         #region GroundPounding_G
         //Grounding

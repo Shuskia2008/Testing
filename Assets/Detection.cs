@@ -20,6 +20,13 @@ public class Detection : MonoBehaviour
             Detection_D = transform.Find("Detect D").GetComponent<Detection>().Detection_D;
         }
     }
+    private void Start()
+    {
+    Detection_L = false;
+    Detection_R = false;
+    Detection_U = false;
+    Detection_D = false;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
