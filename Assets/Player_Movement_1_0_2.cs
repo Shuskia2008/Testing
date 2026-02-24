@@ -35,6 +35,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     public float jumptimeleft_J;
     public float jumpheight_J;
     public bool canJumping_J;
+    private float JumpCodePlugIn;
     #endregion
     #region Grounding_G
     //Grounding
@@ -47,8 +48,9 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #endregion
     #region GroundPounding_G
     //-Groundpound-
-    public float Groundspeed_G;
-    public bool canGrounding_G;
+    public float Groundpoundingspeed_G;
+    private bool currentlyGroundpounding_G;
+    public bool canGroundounding_G;
     #endregion
     #endregion
     #region Dashing_D
@@ -62,25 +64,27 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             float distance = Gravityspeed_G;
             GDx = Mathf.Cos(angle);
             GDy = Mathf.Sin(angle);
+        #region PlayerBody_B
+        //Body
+        transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
+        #endregion
         #region Moving_M
 
         if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canMoving_R == true))
         {
-            moveX = movecontroller * movespeed_L;
+            myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_R;
+            myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_R;
         }
         else if ((GetComponent<Detection>().Detection_L == false) && (movecontroller < 0) && (canMoving_L == true))
         {
-            moveX = movecontroller * movespeed_R;
-        }
-        else if ((movecontroller == 0) && (canMoving_L == true) && (canMoving_R == true))
-        {
-            moveX = movecontroller;
+            myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_L;
+            myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_L;
         }
         else
         {
-            moveX = 0;
+            myRigidbody.linearVelocityX = 0;
+            myRigidbody.linearVelocityY = 0;
         }
-        myRigidbody.linearVelocityX = moveX;
         #endregion
         #region Jumping_J
         //Jumping
@@ -98,13 +102,15 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             transform.position += Vector3.up * 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
             myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;*/
+            JumpCodePlugIn = 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
-            transform.position += new Vector3(GDx * distance, GDy * distance) * 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
+            transform.position += new Vector3(-GDx * JumpCodePlugIn, -GDy * JumpCodePlugIn);
             myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
         }
         # endregion
         #region Grounding_G
+        //Grounding
         #region Gravity_G
         //Gravity
         Physics2D.gravity = new Vector2(GDx * distance, GDy * distance);
@@ -116,7 +122,16 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         //Vector2 dir = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * distance;
         #endregion
         #region GroundPounding_G
-        //Grounding
+        //GroundPounding
+        if (currentlyGroundpounding_G == true)
+        {
+            myRigidbody.linearVelocityX = GDx * Groundpoundingspeed_G;
+            myRigidbody.linearVelocityY = GDy * Groundpoundingspeed_G;
+        }
+        if ((GetComponent<Detection>().Detection_D == true) && (currentlyGroundpounding_G == true))
+        {
+            currentlyGroundpounding_G = false;
+        }
         #endregion
         #endregion
     }
@@ -161,9 +176,13 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region GroundPounding Controller_G
     public void GroundPounding(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && canGrounding_G == true && (GetComponent<Detection>().Detection_D == false))
+        if (ctx.performed && canGroundounding_G == true && (GetComponent<Detection>().Detection_D == false))
         {
-            myRigidbody.linearVelocityY = -Groundspeed_G;
+            currentlyGroundpounding_G = true;
+        }
+        if (ctx.canceled && canGroundounding_G == true && (GetComponent<Detection>().Detection_D == false))
+        {
+            currentlyGroundpounding_G = false;
         }
     }
     #endregion
