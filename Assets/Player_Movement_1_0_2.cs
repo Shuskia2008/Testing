@@ -18,13 +18,13 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #endregion
     #region Moving_L
     //-Left-
-    public float movespeed_L;
+    public float movetime_L;
     public float movelength_L;
     public bool canMoving_L;
     #endregion
     #region Moving_R
     //-Right-
-    public float movespeed_R;
+    public float movetime_R;
     public float movelength_R;
     public bool canMoving_R;
     #endregion
@@ -61,7 +61,6 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     void Update()
     {
             float angle = GravityAngle_G * Mathf.Deg2Rad;
-            float distance = Gravityspeed_G;
             GDx = Mathf.Cos(angle);
             GDy = Mathf.Sin(angle);
         #region PlayerBody_B
@@ -72,18 +71,20 @@ public class Player_Movement_1_0_2 : MonoBehaviour
 
         if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canMoving_R == true))
         {
-            myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_R;
-            myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_R;
+            //myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_R;
+            //myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_R;
+            transform.position += new Vector3(-GDy * movecontroller * movelength_R / movetime_R * Time.deltaTime, GDx * movecontroller * movelength_R / movetime_R * Time.deltaTime);
         }
         else if ((GetComponent<Detection>().Detection_L == false) && (movecontroller < 0) && (canMoving_L == true))
         {
-            myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_L;
-            myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_L;
+            //myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_L;
+            //myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_L;
+            transform.position += new Vector3(-GDy * movecontroller * movelength_L / movetime_L * Time.deltaTime, GDx * movecontroller * movelength_L / movetime_L * Time.deltaTime);
         }
         else
         {
-            myRigidbody.linearVelocityX = 0;
-            myRigidbody.linearVelocityY = 0;
+            //myRigidbody.linearVelocityX = 0;
+            //myRigidbody.linearVelocityY = 0;
         }
         #endregion
         #region Jumping_J
@@ -102,10 +103,12 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             transform.position += Vector3.up * 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
             myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;*/
-            JumpCodePlugIn = 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
+            JumpCodePlugIn = 110 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
             transform.position += new Vector3(-GDx * JumpCodePlugIn, -GDy * JumpCodePlugIn);
-            myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
+            myRigidbody.linearVelocityX = -GDx * Gravityspeed_G * Time.deltaTime;
+            myRigidbody.linearVelocityY = -GDy * Gravityspeed_G * Time.deltaTime;
+            //myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
         }
         # endregion
@@ -113,7 +116,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         //Grounding
         #region Gravity_G
         //Gravity
-        Physics2D.gravity = new Vector2(GDx * distance, GDy * distance);
+        Physics2D.gravity = new Vector2(GDx * Gravityspeed_G, GDy * Gravityspeed_G);
         //myRigidbody.linearVelocityX = GDx;
         //myRigidbody.linearVelocityY = GDy;
         //myRigidbody.linearVelocityY -= Gravityspeed_G * Time.deltaTime;
