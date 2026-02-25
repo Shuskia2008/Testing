@@ -68,17 +68,13 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
         #endregion
         #region Moving_M
-
+        //Moving
         if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canMoving_R == true))
         {
-            //myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_R;
-            //myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_R;
             transform.position += new Vector3(-GDy * movecontroller * movelength_R / movetime_R * Time.deltaTime, GDx * movecontroller * movelength_R / movetime_R * Time.deltaTime);
         }
         else if ((GetComponent<Detection>().Detection_L == false) && (movecontroller < 0) && (canMoving_L == true))
         {
-            //myRigidbody.linearVelocityX = -GDy * movecontroller * movespeed_L;
-            //myRigidbody.linearVelocityY = GDx * movecontroller * movespeed_L;
             transform.position += new Vector3(-GDy * movecontroller * movelength_L / movetime_L * Time.deltaTime, GDx * movecontroller * movelength_L / movetime_L * Time.deltaTime);
         }
         else
@@ -99,16 +95,11 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         }
         if (jumptimeleft_J > 0)
         {
-            /*jumptimeleft_J -= Time.deltaTime * 0.5f;
-            transform.position += Vector3.up * 102 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
-            myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
-            jumptimeleft_J -= Time.deltaTime * 0.5f;*/
             JumpCodePlugIn = 110 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
             transform.position += new Vector3(-GDx * JumpCodePlugIn, -GDy * JumpCodePlugIn);
             myRigidbody.linearVelocityX = -GDx * Gravityspeed_G * Time.deltaTime;
             myRigidbody.linearVelocityY = -GDy * Gravityspeed_G * Time.deltaTime;
-            //myRigidbody.linearVelocityY += Gravityspeed_G * Time.deltaTime;
             jumptimeleft_J -= Time.deltaTime * 0.5f;
         }
         # endregion
@@ -117,12 +108,6 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #region Gravity_G
         //Gravity
         Physics2D.gravity = new Vector2(GDx * Gravityspeed_G, GDy * Gravityspeed_G);
-        //myRigidbody.linearVelocityX = GDx;
-        //myRigidbody.linearVelocityY = GDy;
-        //myRigidbody.linearVelocityY -= Gravityspeed_G * Time.deltaTime;
-        //float angle = 90;
-        //float distance = 1;
-        //Vector2 dir = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * distance;
         #endregion
         #region GroundPounding_G
         //GroundPounding
