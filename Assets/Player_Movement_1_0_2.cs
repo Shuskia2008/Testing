@@ -9,6 +9,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region PlayerBody_B
     //Body
     public Rigidbody2D myRigidbody;
+    public bool RotateCamerabody_B;
     #endregion
     #region Moving_M
     #region Moving_M
@@ -50,7 +51,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     //-Groundpound-
     public float Groundpoundingspeed_G;
     private bool currentlyGroundpounding_G;
-    public bool canGroundounding_G;
+    public bool canGroundpounding_G;
     #endregion
     #endregion
     #region Dashing_D
@@ -60,12 +61,23 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region Player
     void Update()
     {
-            float angle = GravityAngle_G * Mathf.Deg2Rad;
+        #region PlayerVariables
+        //PlayerVariables
+        float angle = GravityAngle_G * Mathf.Deg2Rad;
             GDx = Mathf.Cos(angle);
             GDy = Mathf.Sin(angle);
+        #endregion
         #region PlayerBody_B
         //Body
         transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
+        if (RotateCamerabody_B == true)
+        {
+            //Camera.main.transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
+        }
+        if (RotateCamerabody_B == false)
+        {
+            //Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
         #endregion
         #region Moving_M
         //Moving
@@ -164,11 +176,11 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region GroundPounding Controller_G
     public void GroundPounding(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && canGroundounding_G == true && (GetComponent<Detection>().Detection_D == false))
+        if (ctx.performed && canGroundpounding_G == true && (GetComponent<Detection>().Detection_D == false))
         {
             currentlyGroundpounding_G = true;
         }
-        if (ctx.canceled && canGroundounding_G == true && (GetComponent<Detection>().Detection_D == false))
+        if (ctx.canceled && canGroundpounding_G == true && (GetComponent<Detection>().Detection_D == false))
         {
             currentlyGroundpounding_G = false;
         }
