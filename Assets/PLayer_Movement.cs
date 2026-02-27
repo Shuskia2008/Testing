@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PLayer_Movement : MonoBehaviour
 {
+    /*
     public Rigidbody2D myRigidbody;
     public float movespeed_L;
     public float movelength_L;
@@ -66,5 +67,5 @@ public class PLayer_Movement : MonoBehaviour
         }
         
 
-    }
+    }*/
 }
