@@ -108,14 +108,10 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         if (jumptimeleft_J > 0)
         {
             JumpCodePlugIn = 110 / 100 * jumptimeleft_J * Time.deltaTime * 2 * jumpheight_J / jumptime_J / jumptime_J;
-
             jumptimeleft_J -= Time.deltaTime * 0.5f;
-
             transform.position += new Vector3(-GDx * JumpCodePlugIn, -GDy * JumpCodePlugIn);
-
             myRigidbody.linearVelocityX = -GDx * Gravityspeed_G * Time.deltaTime;
             myRigidbody.linearVelocityY = -GDy * Gravityspeed_G * Time.deltaTime;
-
             jumptimeleft_J -= Time.deltaTime * 0.5f;
         }
         # endregion

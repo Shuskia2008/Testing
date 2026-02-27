@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
-{
+{/*
     public bool isParent;
 
     public bool RotateCamerabody_B = false;
@@ -27,5 +27,5 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         //RotateCamerabody_B = false;
-    }
+    }*/
 }

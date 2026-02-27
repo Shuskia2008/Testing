@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Detection : MonoBehaviour
 {
-    
     public bool isParent;
 
     public bool Detection_L = false;
