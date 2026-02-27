@@ -210,6 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isParent: 0
+  Detection_L: 0
+  Detection_R: 0
+  Detection_U: 0
+  Detection_D: 0
 --- !u!1 &346327162
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,8 +226,7 @@ GameObject:
   - component: {fileID: 346327164}
   - component: {fileID: 346327165}
   - component: {fileID: 346327166}
-  - component: {fileID: 346327168}
-  - component: {fileID: 346327167}
+  - component: {fileID: 346327169}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -271,7 +275,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 12.12
+    OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -308,7 +312,7 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0, z: -10}
---- !u!114 &346327167
+--- !u!114 &346327169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,33 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee03c5206c3ca6b4ab992513a06ee31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &346327168
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346327162}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  isParent: 0
+  RotateCamerabody_B: 0
 --- !u!1 &421701391
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isParent: 0
+  Detection_L: 0
+  Detection_R: 0
+  Detection_U: 0
+  Detection_D: 0
 --- !u!1 &898384617
 GameObject:
   m_ObjectHideFlags: 0
@@ -15373,6 +15357,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isParent: 0
+  Detection_L: 0
+  Detection_R: 0
+  Detection_U: 0
+  Detection_D: 0
 --- !u!1 &1168183882
 GameObject:
   m_ObjectHideFlags: 0
@@ -15464,6 +15453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isParent: 0
+  Detection_L: 0
+  Detection_R: 0
+  Detection_U: 0
+  Detection_D: 0
 --- !u!1 &1392507005
 GameObject:
   m_ObjectHideFlags: 0
@@ -15527,7 +15521,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 12.12
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15650,7 +15644,6 @@ GameObject:
   - component: {fileID: 1771518629}
   - component: {fileID: 1771518630}
   - component: {fileID: 1771518631}
-  - component: {fileID: 1771518634}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15771,6 +15764,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isParent: 1
+  Detection_L: 0
+  Detection_R: 0
+  Detection_U: 0
+  Detection_D: 0
 --- !u!114 &1771518630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15783,6 +15781,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ecfcbf1da901f43b6c53ea3005127f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRigidbody: {fileID: 1771518627}
+  RotateCamerabody_B: 0
+  moveX: 10
+  movecontroller: 10
+  movetime_L: 1
+  movelength_L: 10
+  canMoving_L: 1
+  movetime_R: 1
+  movelength_R: 10
+  canMoving_R: 1
+  jumptime_J: 1
+  jumptimeleft_J: 0
+  jumpheight_J: 10
+  canJumping_J: 1
+  Gravityspeed_G: 10
+  GravityAngle_G: -90
+  GDx: 0
+  GDy: 0
+  Groundpoundingspeed_G: 50
+  canGroundpounding_G: 1
 --- !u!114 &1771518631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15977,18 +15995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee03c5206c3ca6b4ab992513a06ee31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1771518634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771518623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a436a1cb551a00749964f76e8b7576bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isParent: 0
+  RotateCamerabody_B: 0
 --- !u!1 &2141002273
 GameObject:
   m_ObjectHideFlags: 0
