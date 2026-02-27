@@ -227,7 +227,6 @@ GameObject:
   - component: {fileID: 346327165}
   - component: {fileID: 346327166}
   - component: {fileID: 346327168}
-  - component: {fileID: 346327167}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -247,8 +246,7 @@ Transform:
   m_LocalPosition: {x: -10.451928, y: 10.186588, z: -9.998125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1771518624}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &346327165
@@ -313,47 +311,19 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0, z: -10}
---- !u!114 &346327167
+--- !u!114 &346327168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346327162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee03c5206c3ca6b4ab992513a06ee31a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4afa82ae3200b82408d605c3dbdd1e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isParent: 1
-  RotateCamerabody_B: 0
---- !u!50 &346327168
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346327162}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  Damping: 0
 --- !u!1 &421701391
 GameObject:
   m_ObjectHideFlags: 0
@@ -11174,7 +11144,6 @@ GameObject:
   - component: {fileID: 1771518628}
   - component: {fileID: 1771518627}
   - component: {fileID: 1771518632}
-  - component: {fileID: 1771518633}
   - component: {fileID: 1771518629}
   - component: {fileID: 1771518630}
   - component: {fileID: 1771518631}
@@ -11194,7 +11163,7 @@ Transform:
   m_GameObject: {fileID: 1771518623}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.00008726013, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: -10.451928, y: 10.186588, z: 0.0018749237}
   m_LocalScale: {x: 0.95, y: 0.95, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11202,7 +11171,7 @@ Transform:
   - {fileID: 1053506536}
   - {fileID: 1168183883}
   - {fileID: 421701392}
-  m_Father: {fileID: 346327164}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.01}
 --- !u!50 &1771518627
 Rigidbody2D:
@@ -11316,6 +11285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 1771518627}
+  CinemachineCamera: {fileID: 346327165}
   RotateCamerabody_B: 0
   moveX: 0
   movecontroller: 0
@@ -11334,7 +11304,7 @@ MonoBehaviour:
   GDx: 0
   GDy: 0
   Groundpoundingspeed_G: 50
-  canGroundpounding_G: 0
+  canGroundpounding_G: 1
 --- !u!114 &1771518631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11517,20 +11487,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1771518633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771518623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee03c5206c3ca6b4ab992513a06ee31a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isParent: 0
-  RotateCamerabody_B: 0
 --- !u!1 &2141002273
 GameObject:
   m_ObjectHideFlags: 0
@@ -11583,3 +11539,4 @@ SceneRoots:
   - {fileID: 2141002275}
   - {fileID: 1392507008}
   - {fileID: 346327164}
+  - {fileID: 1771518624}

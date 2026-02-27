@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region PlayerBody_B
     //Body
     public Rigidbody2D myRigidbody;
+    public CinemachineCamera CinemachineCamera;
     public bool RotateCamerabody_B;
     #endregion
     #region Moving_M
@@ -70,13 +72,13 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #region PlayerBody_B
         //Body
         transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
-        if (RotateCamerabody_B == true)
+        if (RotateCamerabody_B)
         {
-            //Camera.main.transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
+            CinemachineCamera.GetComponent<CinemachineRotateWithFollowTarget>().enabled = true;
         }
-        if (RotateCamerabody_B == false)
+        else
         {
-            //Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
+            CinemachineCamera.GetComponent<CinemachineRotateWithFollowTarget>().enabled = false;
         }
         #endregion
         #region Moving_M
