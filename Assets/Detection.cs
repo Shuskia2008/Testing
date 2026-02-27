@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Detection : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
+    /*
+>>>>>>> parent of 64a221b (fiured some stuff out and DO NOT PUT A RIGIDBODY ON THE CINEMACHINE WHILE IT IS THE PARENT OF THE PLAYER. I hope you have a good day : ))
     public bool isParent;
 
     public bool Detection_L = false;
@@ -66,5 +70,5 @@ public class Detection : MonoBehaviour
         {
             Detection_D = false;
         }
-    }
+    }*/
 }

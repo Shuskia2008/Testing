@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PLayer_Movement : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
+    /*
+>>>>>>> parent of 64a221b (fiured some stuff out and DO NOT PUT A RIGIDBODY ON THE CINEMACHINE WHILE IT IS THE PARENT OF THE PLAYER. I hope you have a good day : ))
     public Rigidbody2D myRigidbody;
     public float movespeed_L;
     public float movelength_L;
@@ -66,5 +70,5 @@ public class PLayer_Movement : MonoBehaviour
         }
         
 
-    }
+    }*/
 }

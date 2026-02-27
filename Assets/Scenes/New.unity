@@ -210,11 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isParent: 0
-  Detection_L: 0
-  Detection_R: 0
-  Detection_U: 0
-  Detection_D: 0
 --- !u!1 &346327162
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee03c5206c3ca6b4ab992513a06ee31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   isParent: 1
   RotateCamerabody_B: 0
+=======
+>>>>>>> parent of 64a221b (fiured some stuff out and DO NOT PUT A RIGIDBODY ON THE CINEMACHINE WHILE IT IS THE PARENT OF THE PLAYER. I hope you have a good day : ))
 --- !u!50 &346327168
 Rigidbody2D:
   serializedVersion: 5
@@ -445,11 +443,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   isParent: 0
   Detection_L: 0
   Detection_R: 0
   Detection_U: 0
   Detection_D: 1
+=======
+>>>>>>> parent of 64a221b (fiured some stuff out and DO NOT PUT A RIGIDBODY ON THE CINEMACHINE WHILE IT IS THE PARENT OF THE PLAYER. I hope you have a good day : ))
 --- !u!1 &898384617
 GameObject:
   m_ObjectHideFlags: 0
@@ -10891,11 +10892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isParent: 0
-  Detection_L: 0
-  Detection_R: 0
-  Detection_U: 0
-  Detection_D: 0
 --- !u!1 &1168183882
 GameObject:
   m_ObjectHideFlags: 0
@@ -10987,11 +10983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isParent: 0
-  Detection_L: 0
-  Detection_R: 0
-  Detection_U: 0
-  Detection_D: 0
 --- !u!1 &1392507005
 GameObject:
   m_ObjectHideFlags: 0
@@ -11178,6 +11169,7 @@ GameObject:
   - component: {fileID: 1771518629}
   - component: {fileID: 1771518630}
   - component: {fileID: 1771518631}
+  - component: {fileID: 1771518634}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11298,11 +11290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a758253ce6c13418d951d3df4afbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isParent: 1
-  Detection_L: 0
-  Detection_R: 0
-  Detection_U: 0
-  Detection_D: 0
 --- !u!114 &1771518630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11315,6 +11302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ecfcbf1da901f43b6c53ea3005127f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   myRigidbody: {fileID: 1771518627}
   RotateCamerabody_B: 0
   moveX: 0
@@ -11335,6 +11323,8 @@ MonoBehaviour:
   GDy: 0
   Groundpoundingspeed_G: 50
   canGroundpounding_G: 0
+=======
+>>>>>>> parent of 64a221b (fiured some stuff out and DO NOT PUT A RIGIDBODY ON THE CINEMACHINE WHILE IT IS THE PARENT OF THE PLAYER. I hope you have a good day : ))
 --- !u!114 &1771518631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11529,8 +11519,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee03c5206c3ca6b4ab992513a06ee31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isParent: 0
-  RotateCamerabody_B: 0
+--- !u!114 &1771518634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771518623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a436a1cb551a00749964f76e8b7576bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141002273
 GameObject:
   m_ObjectHideFlags: 0

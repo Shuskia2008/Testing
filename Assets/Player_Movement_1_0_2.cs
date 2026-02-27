@@ -5,7 +5,7 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Player_Movement_1_0_2 : MonoBehaviour
 {
-    #region Variables
+    /*#region Variables
     #region PlayerBody_B
     //Body
     public Rigidbody2D myRigidbody;
@@ -187,5 +187,5 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     }
     #endregion
     #endregion
-    #endregion
+    #endregion*/
 }
