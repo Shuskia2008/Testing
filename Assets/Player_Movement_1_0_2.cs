@@ -13,7 +13,8 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     public CinemachineCamera CinemachineCamera;
     public bool RotateCamerabody_B;
     #endregion
-    #region Moving_M
+    #region AllMoving_M
+    #region Walking_M
     #region Moving_M
     //Moving
     public float moveX;
@@ -30,6 +31,25 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     public float movetime_R;
     public float movelength_R;
     public bool canMoving_R;
+    #endregion
+    #endregion
+    #region Running_M
+    #region Sprinting_M
+    //Sprinting
+    private bool currentlySprinting_M;
+    #endregion
+    #region Sprinting_L
+    //-Left-
+    public float sprinttime_L;
+    public float sprintlength_L;
+    public bool canSprinting_L;
+    #endregion
+    #region Sprinting_R
+    //-Right-
+    public float sprinttime_R;
+    public float sprintlength_R;
+    public bool canSprinting_R;
+    #endregion
     #endregion
     #endregion
     #region Jumping_J
@@ -81,21 +101,43 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             CinemachineCamera.GetComponent<CinemachineRotateWithFollowTarget>().enabled = false;
         }
         #endregion
-        #region Moving_M
+        #region AllMoving_M
+        #region Walking_M
         //Moving
-        if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canMoving_R == true))
+        if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canMoving_R == true) && (currentlySprinting_M == false))
         {
             transform.position += new Vector3(-GDy * movecontroller * movelength_R / movetime_R * Time.deltaTime, GDx * movecontroller * movelength_R / movetime_R * Time.deltaTime);
+            moveX = movecontroller * movelength_R / movetime_R;
         }
-        else if ((GetComponent<Detection>().Detection_L == false) && (movecontroller < 0) && (canMoving_L == true))
+        else if ((GetComponent<Detection>().Detection_L == false) && (movecontroller < 0) && (canMoving_L == true) && (currentlySprinting_M == false))
         {
             transform.position += new Vector3(-GDy * movecontroller * movelength_L / movetime_L * Time.deltaTime, GDx * movecontroller * movelength_L / movetime_L * Time.deltaTime);
+            moveX = movecontroller * movelength_L / movetime_L;
         }
         else
         {
             //myRigidbody.linearVelocityX = 0;
             //myRigidbody.linearVelocityY = 0;
         }
+        #endregion
+        #region Running_M
+        //Sprinting
+        if ((GetComponent<Detection>().Detection_R == false) && (movecontroller > 0) && (canSprinting_R == true) && (currentlySprinting_M == true))
+        {
+            transform.position += new Vector3(-GDy * movecontroller * sprintlength_R / sprinttime_R * Time.deltaTime, GDx * movecontroller * sprintlength_R / sprinttime_R * Time.deltaTime);
+            moveX = movecontroller * sprintlength_R / sprinttime_R;
+        }
+        else if ((GetComponent<Detection>().Detection_L == false) && (movecontroller < 0) && (canSprinting_L == true) && (currentlySprinting_M == true))
+        {
+            transform.position += new Vector3(-GDy * movecontroller * sprintlength_L / sprinttime_L * Time.deltaTime, GDx * movecontroller * sprintlength_L / sprinttime_L * Time.deltaTime);
+            moveX = movecontroller * sprintlength_L / sprinttime_L;
+        }
+        else
+        {
+            //myRigidbody.linearVelocityX = 0;
+            //myRigidbody.linearVelocityY = 0;
+        }
+        #endregion
         #endregion
         #region Jumping_J
         //Jumping
@@ -139,12 +181,27 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     }
     #endregion
     #region Controller
+    #region AllMoving_M
     #region Moving Controller_M
     public void Move(InputAction.CallbackContext ctx)
     {
         movecontroller = ctx.ReadValue<Vector2>().x;
     }
-    # endregion
+    #endregion
+    #region Sprinting Controller_M
+    public void Sprint(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            currentlySprinting_M = true;
+        }
+        if (ctx.canceled)
+        {
+            currentlySprinting_M = false;
+        }
+    }
+    #endregion
+    #endregion
     #region Jumping Controller_J
     public void Jump(InputAction.CallbackContext ctx)
     {
