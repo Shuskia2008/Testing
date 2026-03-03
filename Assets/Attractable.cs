@@ -3,6 +3,7 @@ using UnityEngine;
 public class Attractable : MonoBehaviour
 {
     [SerializeField] private bool rotateToCenter = true;
+    [SerializeField] private float _rotationSpeed = 5;
     [SerializeField] Attractor currentAttractor;
 
     Transform m_transform;
@@ -42,5 +43,7 @@ public class Attractable : MonoBehaviour
         Vector2 distanceVector = (Vector2)currentAttractor.planetTransform.position - (Vector2)m_transform.position;
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
         m_transform.rotation = Quaternion.AngleAxis(angle + 90,Vector3.forward);
+
+        //m_transform.up = -(currentAttractor.planetTransform.position - m_transform.position).normalized;
     }
 }

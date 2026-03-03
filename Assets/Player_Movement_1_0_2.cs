@@ -91,7 +91,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #endregion
         #region PlayerBody_B
         //Body
-        transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
+        //transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
         if (RotateCamerabody_B)
         {
             CinemachineCamera.GetComponent<CinemachineRotateWithFollowTarget>().enabled = true;
