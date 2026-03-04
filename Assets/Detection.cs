@@ -8,6 +8,7 @@ public class Detection : MonoBehaviour
     public bool Detection_R = false;
     public bool Detection_U = false;
     public bool Detection_D = false;
+    public bool Detection_A = false;
 
     private void Update()
     {
@@ -18,6 +19,7 @@ public class Detection : MonoBehaviour
             Detection_R = transform.Find("Detect R").GetComponent<Detection>().Detection_R;
             Detection_U = transform.Find("Detect U").GetComponent<Detection>().Detection_U;
             Detection_D = transform.Find("Detect D").GetComponent<Detection>().Detection_D;
+            Detection_A = transform.Find("Detect A").GetComponent<Detection>().Detection_A;
         }
     }
     private void Start()
@@ -26,6 +28,7 @@ public class Detection : MonoBehaviour
     Detection_R = false;
     Detection_U = false;
     Detection_D = false;
+    Detection_A = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,6 +49,10 @@ public class Detection : MonoBehaviour
         {
             Detection_D = true;
         }
+        if (collision.gameObject.CompareTag("Tile") && gameObject.name == "Detect A")
+        {
+            Detection_A = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -65,6 +72,10 @@ public class Detection : MonoBehaviour
         if (gameObject.name == "Detect D")
         {
             Detection_D = false;
+        }
+        if (gameObject.name == "Detect A")
+        {
+            Detection_A = false;
         }
     }
 }

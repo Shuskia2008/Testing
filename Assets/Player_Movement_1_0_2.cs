@@ -1,8 +1,6 @@
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Player_Movement_1_0_2 : MonoBehaviour
 {
@@ -66,6 +64,8 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     //-Gravity-
     public float Gravityspeed_G;
     public float GravityAngle_G;
+    public float AttractableAngle_G;
+    public bool GravityPlanetary_G;
     public float GDx;
     public float GDy;
     #endregion
@@ -81,17 +81,24 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #endregion
     #endregion
     #region Player
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Attractor script = collision.gameObject.GetComponent<Attractor>();
+        
+
+        if (script != null)
+        {
+
+        }
+    }
     void Update()
     {
         #region PlayerVariables
         //PlayerVariables
-        float angle = GravityAngle_G * Mathf.Deg2Rad;
-            GDx = Mathf.Cos(angle);
-            GDy = Mathf.Sin(angle);
         #endregion
         #region PlayerBody_B
         //Body
-        //transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
         if (RotateCamerabody_B)
         {
             CinemachineCamera.GetComponent<CinemachineRotateWithFollowTarget>().enabled = true;
@@ -164,6 +171,24 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #region Gravity_G
         //Gravity
         Physics2D.gravity = new Vector2(GDx * Gravityspeed_G, GDy * Gravityspeed_G);
+        if (GravityPlanetary_G)
+        {
+            AttractableAngle_G = (GetComponent<Attractable>().AttractableAngle) * Mathf.Deg2Rad;
+            GDx = Mathf.Cos(AttractableAngle_G);
+            GDy = Mathf.Sin(AttractableAngle_G);
+            if (GetComponent<Detection>().Detection_A == true && FindWhatTriggeredIt)
+            {
+                //something
+                SetComponent<Attractable>().currentAttractor = FindWhatTriggeredIt;
+            }
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
+            float angle = GravityAngle_G * Mathf.Deg2Rad;
+            GDx = Mathf.Cos(angle);
+            GDy = Mathf.Sin(angle);
+        }
         #endregion
         #region GroundPounding_G
         //GroundPounding

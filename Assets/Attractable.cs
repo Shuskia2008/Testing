@@ -9,6 +9,7 @@ public class Attractable : MonoBehaviour
     Transform m_transform;
     Collider2D m_collider;
     Rigidbody2D m_rigidbody;
+    public float AttractableAngle;
 
     private void Awake()
     {
@@ -43,7 +44,6 @@ public class Attractable : MonoBehaviour
         Vector2 distanceVector = (Vector2)currentAttractor.planetTransform.position - (Vector2)m_transform.position;
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
         m_transform.rotation = Quaternion.AngleAxis(angle + 90,Vector3.forward);
-
-        //m_transform.up = -(currentAttractor.planetTransform.position - m_transform.position).normalized;
+        AttractableAngle = angle;
     }
 }
