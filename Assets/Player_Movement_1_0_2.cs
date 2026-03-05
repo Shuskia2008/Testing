@@ -85,11 +85,11 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Attractor script = collision.gameObject.GetComponent<Attractor>();
-        
+        Attractable self = gameObject.GetComponent<Attractable>();
 
-        if (script != null)
+        if (script != null && self != null)
         {
-
+            self.currentAttractor = script;
         }
     }
     void Update()
@@ -176,10 +176,10 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             AttractableAngle_G = (GetComponent<Attractable>().AttractableAngle) * Mathf.Deg2Rad;
             GDx = Mathf.Cos(AttractableAngle_G);
             GDy = Mathf.Sin(AttractableAngle_G);
-            if (GetComponent<Detection>().Detection_A == true && FindWhatTriggeredIt)
+            if (GetComponent<Detection>().Detection_A == true) //&& FindWhatTriggeredIt)
             {
                 //something
-                SetComponent<Attractable>().currentAttractor = FindWhatTriggeredIt;
+                //SetComponent<Attractable>().currentAttractor = FindWhatTriggeredIt;
             }
         }
         else

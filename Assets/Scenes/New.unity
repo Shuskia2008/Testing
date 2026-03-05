@@ -302,6 +302,7 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 0
+  Detection_A: 0
 --- !u!1 &327415330
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +739,7 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 1
+  Detection_A: 0
 --- !u!1 &587361243
 GameObject:
   m_ObjectHideFlags: 0
@@ -11559,6 +11561,7 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 0
+  Detection_A: 0
 --- !u!1 &1168183882
 GameObject:
   m_ObjectHideFlags: 0
@@ -11655,6 +11658,7 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 0
+  Detection_A: 0
 --- !u!1 &1292368805
 GameObject:
   m_ObjectHideFlags: 0
@@ -11741,6 +11745,7 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 1
+  Detection_A: 0
 --- !u!1 &1392507005
 GameObject:
   m_ObjectHideFlags: 0
@@ -12086,6 +12091,7 @@ MonoBehaviour:
   Detection_R: 0
   Detection_U: 0
   Detection_D: 0
+  Detection_A: 0
 --- !u!114 &1771518630
 MonoBehaviour:
   m_ObjectHideFlags: 0

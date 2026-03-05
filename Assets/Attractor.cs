@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attractor : MonoBehaviour
 {
     public LayerMask AttractionLayer;
-    public float Gravity = -10;
+    public float Gravity;
     [SerializeField] private float effectionRadius = 10;
     public List<Collider2D> AttractedObjects = new List<Collider2D>();
     [HideInInspector] public Transform planetTransform;

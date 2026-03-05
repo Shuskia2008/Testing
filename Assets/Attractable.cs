@@ -4,7 +4,7 @@ public class Attractable : MonoBehaviour
 {
     [SerializeField] private bool rotateToCenter = true;
     [SerializeField] private float _rotationSpeed = 5;
-    [SerializeField] Attractor currentAttractor;
+    public Attractor currentAttractor;
 
     Transform m_transform;
     Collider2D m_collider;
