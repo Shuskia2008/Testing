@@ -61,13 +61,20 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region Grounding_G
     //Grounding
     #region Gravity_G
-    //-Gravity-
+    #region GravityGlobal_G
+    //-Gravity Global-
     public float Gravityspeed_G;
     public float GravityAngle_G;
-    public float AttractableAngle_G;
-    public bool GravityPlanetary_G;
     public float GDx;
     public float GDy;
+    #endregion
+    #region GravityLocal_G
+    //-Gravity Local-
+    public float AttractableAngle_G;
+    public bool PlanetaryGravity_G;
+    public bool PlanetaryBody_G;
+    public bool PlanetaryController_G;
+    #endregion
     #endregion
     #region GroundPounding_G
     //-Groundpound-
@@ -170,24 +177,36 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         //Grounding
         #region Gravity_G
         //Gravity
-        Physics2D.gravity = new Vector2(GDx * Gravityspeed_G, GDy * Gravityspeed_G);
-        if (GravityPlanetary_G)
+        //PlanetaryController_G
+        if (PlanetaryController_G)
         {
             AttractableAngle_G = (GetComponent<Attractable>().AttractableAngle) * Mathf.Deg2Rad;
             GDx = Mathf.Cos(AttractableAngle_G);
             GDy = Mathf.Sin(AttractableAngle_G);
-            if (GetComponent<Detection>().Detection_A == true) //&& FindWhatTriggeredIt)
-            {
-                //something
-                //SetComponent<Attractable>().currentAttractor = FindWhatTriggeredIt;
-            }
+        }
+        else
+        {
+            float angle = GravityAngle_G * Mathf.Deg2Rad;
+            GDx = Mathf.Cos(angle);
+            GDy = Mathf.Sin(angle);
+        }
+        //PlanetaryBody_G
+        if (PlanetaryBody_G)
+        {
+            GetComponent<Attractable>().rotateToCenter = PlanetaryBody_G;
         }
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
-            float angle = GravityAngle_G * Mathf.Deg2Rad;
-            GDx = Mathf.Cos(angle);
-            GDy = Mathf.Sin(angle);
+        }
+        //PlanetaryGravity_G
+        if (PlanetaryGravity_G)
+        {
+            GetComponent<Attractable>().isAttracted = PlanetaryGravity_G;
+        }
+        else
+        {
+            Physics2D.gravity = new Vector2(GDx * Gravityspeed_G, GDy * Gravityspeed_G);
         }
         #endregion
         #region GroundPounding_G
