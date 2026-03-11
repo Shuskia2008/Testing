@@ -20,8 +20,8 @@ public class Attractable : MonoBehaviour
 
     private void Update()
     {
-        rotateToCenter = GetComponent<Player_Movement_1_0_2>().PlanetaryBody_G;
-        isAttracted = GetComponent<Player_Movement_1_0_2>().PlanetaryGravity_G;
+        rotateToCenter = GetComponent<Player_Movement_1_0_2>().PlanetaryBody_P;
+        isAttracted = GetComponent<Player_Movement_1_0_2>().PlanetaryGravity_P;
         if (currentAttractor != null)
         {
             if (!currentAttractor.AttractedObjects.Contains(m_collider)) currentAttractor = null;

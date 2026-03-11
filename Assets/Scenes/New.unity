@@ -880,7 +880,7 @@ MonoBehaviour:
   AttractionLayer:
     serializedVersion: 2
     m_Bits: 256
-  Gravity: -11
+  Gravity: -20
   effectionRadius: 30
   AttractedObjects: []
   planetTransform: {fileID: 0}
@@ -12273,10 +12273,12 @@ MonoBehaviour:
   GravityAngle_G: -90
   GDx: 0
   GDy: 0
-  AttractableAngle_G: 0
-  PlanetaryGravity_G: 1
-  PlanetaryBody_G: 1
-  PlanetaryController_G: 1
+  AttractableAngle_P: 0
+  PlanetaryGravityspeed_P: 0
+  PlanetaryGravity_P: 0
+  PlanetaryGradualGravity_P: 0
+  PlanetaryBody_P: 0
+  PlanetaryController_P: 0
   Groundpoundingspeed_G: 50
   canGroundpounding_G: 1
 --- !u!114 &1771518631

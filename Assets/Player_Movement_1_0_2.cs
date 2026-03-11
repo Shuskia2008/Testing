@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player_Movement_1_0_2 : MonoBehaviour
 {
@@ -70,10 +71,12 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #endregion
     #region GravityLocal_G
     //-Gravity Local-
-    public float AttractableAngle_G;
-    public bool PlanetaryGravity_G;
-    public bool PlanetaryBody_G;
-    public bool PlanetaryController_G;
+    public float AttractableAngle_P;
+    public float PlanetaryGravityspeed_P;
+    public bool PlanetaryGravity_P;
+    public bool PlanetaryGradualGravity_P;
+    public bool PlanetaryBody_P;
+    public bool PlanetaryController_P;
     #endregion
     #endregion
     #region GroundPounding_G
@@ -91,6 +94,10 @@ public class Player_Movement_1_0_2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector3 T = collision.gameObject.transform.position;
+        Vector3 U = transform.position;
+        float distance = Vector3.Distance(T, U);
+
         Attractor script = collision.gameObject.GetComponent<Attractor>();
         Attractable self = gameObject.GetComponent<Attractable>();
 
@@ -178,11 +185,11 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #region Gravity_G
         //Gravity
         //PlanetaryController_G
-        if (PlanetaryController_G)
+        if (PlanetaryController_P)
         {
-            AttractableAngle_G = (GetComponent<Attractable>().AttractableAngle) * Mathf.Deg2Rad;
-            GDx = Mathf.Cos(AttractableAngle_G);
-            GDy = Mathf.Sin(AttractableAngle_G);
+            AttractableAngle_P = (GetComponent<Attractable>().AttractableAngle) * Mathf.Deg2Rad;
+            GDx = Mathf.Cos(AttractableAngle_P);
+            GDy = Mathf.Sin(AttractableAngle_P);
         }
         else
         {
@@ -191,18 +198,22 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             GDy = Mathf.Sin(angle);
         }
         //PlanetaryBody_G
-        if (PlanetaryBody_G)
+        if (PlanetaryBody_P)
         {
-            GetComponent<Attractable>().rotateToCenter = PlanetaryBody_G;
+            GetComponent<Attractable>().rotateToCenter = PlanetaryBody_P;
         }
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
         }
         //PlanetaryGravity_G
-        if (PlanetaryGravity_G)
+        if (PlanetaryGravity_P & !PlanetaryGradualGravity_P)
         {
-            GetComponent<Attractable>().isAttracted = PlanetaryGravity_G;
+            GetComponent<Attractable>().isAttracted = PlanetaryGravity_P;
+        }
+        else if (PlanetaryGravity_P & PlanetaryGradualGravity_P)
+        {
+            collision.gameObject.GetComponent<transform>().position
         }
         else
         {
