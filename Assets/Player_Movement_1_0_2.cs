@@ -72,11 +72,14 @@ public class Player_Movement_1_0_2 : MonoBehaviour
     #region GravityLocal_G
     //-Gravity Local-
     public float AttractableAngle_P;
+    public float PlanetarySize_P;
+    public float PlanetaryEffectionSize_P;
+    public float PlanetaryGravityMagnitude_P;
     public float PlanetaryGravityspeed_P;
-    public bool PlanetaryGravity_P;
-    public bool PlanetaryGradualGravity_P;
-    public bool PlanetaryBody_P;
-    public bool PlanetaryController_P;
+    public bool canPlanetaryGravity_P;
+    public bool canPlanetaryGravityGradual_P;
+    public bool canPlanetaryBody_P;
+    public bool canPlanetaryController_P;
     #endregion
     #endregion
     #region GroundPounding_G
@@ -94,9 +97,13 @@ public class Player_Movement_1_0_2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3 T = collision.gameObject.transform.position;
-        Vector3 U = transform.position;
-        float distance = Vector3.Distance(T, U);
+        Vector3 PlanetPosition = collision.gameObject.transform.position;
+        Vector3 PlayerPosition = transform.position;
+        PlanetaryGravityspeed_P = collision.gameObject.GetComponent<Attractor>().Gravity;
+        PlanetaryGravityMagnitude_P = Vector3.Distance(PlanetPosition, PlayerPosition);
+        PlanetarySize_P = collision.gameObject.GetComponent<CircleCollider2D>().radius;
+        PlanetaryEffectionSize_P = collision.gameObject.GetComponent<Attractor>().effectionRadius;
+
 
         Attractor script = collision.gameObject.GetComponent<Attractor>();
         Attractable self = gameObject.GetComponent<Attractable>();
@@ -106,6 +113,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             self.currentAttractor = script;
         }
     }
+
     void Update()
     {
         #region PlayerVariables
@@ -185,7 +193,7 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         #region Gravity_G
         //Gravity
         //PlanetaryController_G
-        if (PlanetaryController_P)
+        if (canPlanetaryController_P)
         {
             AttractableAngle_P = (GetComponent<Attractable>().AttractableAngle) * Mathf.Deg2Rad;
             GDx = Mathf.Cos(AttractableAngle_P);
@@ -198,22 +206,23 @@ public class Player_Movement_1_0_2 : MonoBehaviour
             GDy = Mathf.Sin(angle);
         }
         //PlanetaryBody_G
-        if (PlanetaryBody_P)
+        if (canPlanetaryBody_P)
         {
-            GetComponent<Attractable>().rotateToCenter = PlanetaryBody_P;
+            GetComponent<Attractable>().rotateToCenter = canPlanetaryBody_P;
         }
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, GravityAngle_G + 90);
         }
         //PlanetaryGravity_G
-        if (PlanetaryGravity_P & !PlanetaryGradualGravity_P)
+        if (canPlanetaryGravity_P & !canPlanetaryGravityGradual_P)
         {
-            GetComponent<Attractable>().isAttracted = PlanetaryGravity_P;
+            GetComponent<Attractable>().isAttracted = canPlanetaryGravity_P;
         }
-        else if (PlanetaryGravity_P & PlanetaryGradualGravity_P)
+        else if (canPlanetaryGravity_P & canPlanetaryGravityGradual_P)
         {
-            collision.gameObject.GetComponent<transform>().position
+            Gravityspeed_G = PlanetaryGravityspeed_P * ((PlanetaryEffectionSize_P - PlanetarySize_P) - (PlanetaryGravityMagnitude_P - PlanetarySize_P));
+            Physics2D.gravity = new Vector2(GDx * Gravityspeed_G, GDy * Gravityspeed_G);
         }
         else
         {
