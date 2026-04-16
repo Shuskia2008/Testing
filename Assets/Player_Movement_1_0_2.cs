@@ -97,6 +97,8 @@ public class Player_Movement_1_0_2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Tile"))
+        {
         Vector3 PlanetPosition = collision.gameObject.transform.position;
         Vector3 PlayerPosition = transform.position;
         PlanetaryGravityspeed_P = collision.gameObject.GetComponent<Attractor>().Gravity;
@@ -108,9 +110,11 @@ public class Player_Movement_1_0_2 : MonoBehaviour
         Attractor script = collision.gameObject.GetComponent<Attractor>();
         Attractable self = gameObject.GetComponent<Attractable>();
 
-        if (script != null && self != null)
-        {
-            self.currentAttractor = script;
+            if (script != null && self != null)
+            {
+                self.currentAttractor = script;
+            }
+
         }
     }
 
