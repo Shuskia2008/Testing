@@ -1141,7 +1141,6 @@ Transform:
   - {fileID: 1250885381}
   - {fileID: 883354514}
   - {fileID: 1541638785}
-  - {fileID: 1333672806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &67573448
@@ -17234,7 +17233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98143c6fc2ce2249831308fc06a6797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: RainBowx
+  itemName: Whitebox
   quantity: 1
   sprite: {fileID: 7482667652216324306, guid: cf9e7ce5d51957f4eb6940d1d849a973, type: 3}
 --- !u!50 &1333672804
@@ -17319,12 +17318,12 @@ Transform:
   m_GameObject: {fileID: 1333672802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 907.58, y: 506.59, z: 0}
+  m_LocalPosition: {x: 897.4878, y: 516.7701, z: -0.0024144652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1080742841}
-  m_Father: {fileID: 59130670}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1333672807
 MonoBehaviour:
@@ -27078,5 +27077,6 @@ SceneRoots:
   - {fileID: 59130670}
   - {fileID: 624929185}
   - {fileID: 665221976}
+  - {fileID: 1333672806}
   - {fileID: 1495922242}
   - {fileID: 708823389}
